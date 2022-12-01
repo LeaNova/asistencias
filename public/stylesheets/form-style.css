@@ -1,0 +1,179 @@
+.formu {
+    padding: 20px;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.titulo p {
+    font-weight: bold;
+}
+
+.form {
+    background-color: rgb(240, 240, 240);
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-item {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+}
+
+.border {
+    border: 2px grey solid;
+    border-radius: 15px;
+}
+
+.border-2 {
+    border-radius: 10px;
+}
+
+/*FLEX*/
+.dis-flex {
+    display: flex;
+}
+
+/*DATO*/
+.dato {
+    margin: 0 auto;
+}
+
+.dato label {
+    display: block;
+    padding: 5px 0;
+}
+
+.dato input, .dato select {
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 0;
+    padding: 7px;
+}
+
+.dato-checkbox {
+    display: flex;
+    justify-content: center;
+}
+
+.dato-checkbox input {
+    margin-right: 5px;
+}
+
+/*SMALL*/
+.width-small {
+    width: 140px;
+}
+
+.small input {
+    width: 124px;
+}
+
+.small select {
+    width: 100%;
+}
+
+/*MEDIUM*/
+.width-medium {
+    width: 200px;
+}
+
+.medium input {
+    width: 184px;
+}
+
+.medium select {
+    width: 100%;
+}
+
+/*LARGE*/
+.width-large {
+    width: 260px;
+}
+
+.large input {
+    width: 244px;
+}
+
+.large select {
+    width: 100%;
+}
+
+/*NORMAL*/
+.width-normal {
+    width: 400px;
+}
+
+.normal input {
+    width: 384px;
+}
+
+.normal select {
+    width: 100%;
+}
+
+/*BOTONERA*/
+.botonera {
+    justify-content: center;
+    padding-top: 20px;
+    display: flex;
+}
+
+.botonera-item {
+    justify-content: center;
+    display: flex;
+}
+
+.botonera a {
+    text-decoration: none;
+}
+
+.botonera a, .botonera input, .botonera-item input {
+    background-color: #fff;
+    border: 1px black solid;
+    margin: 0 10px;
+    padding: 7px;
+} 
+
+/*BUTTON*/
+#button {
+    color: black;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+#button:hover {
+    cursor: pointer;
+    background-color: grey;
+}
+
+/*DELETE*/
+#button-delete {
+    background-color: #ee4242;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+#button-delete:hover {
+    cursor: pointer;
+    background-color: #960018;
+}
+
+/*INFO*/
+.info {
+    margin: 5px 0;
+}
+
+.info-item {
+    width: 200px;
+    margin: auto;
+}
+
+.info p {
+    text-align: center;
+}

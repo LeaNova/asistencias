@@ -1,0 +1,51 @@
+extends ../layout
+
+block content
+    div(class="planilla bgc-3")
+        div.titulo
+            h1= "Asistencias de " + materia.nombre
+        div
+            input(type="button" value="Exportar", onclick="tableToExcel('asistencia', 'TABLA')")
+        div(class="scroll-h")
+            table(id="asistencia")
+                thead
+                    tr
+                        th(id="usuario") Usuario
+                        th(id="normal") Nombre
+                        th(id="normal") Apellido
+                        each item in asistencias
+                            th(id=item.enCuenta ? "" : "tachado")= item.fecha.getDate() + "/" + `${item.fecha.getMonth() + 1}` + "/" +item.fecha.getFullYear()
+                tbody
+                    each item in presentes
+                        tr
+                            td= item.Usuario.mail
+                            td= item.Usuario.nombre
+                            td= item.Usuario.apellido
+                            each sub in item.Presentes
+                                td(id="presente")= sub.presente ? "P" : "A"
+                tfoot
+                    tr
+                        td 
+                        td 
+                        td 
+                        each item in asistencias
+                            td(id="presente")
+                                form(action=`/asistencia/change/${materia.codMateria}/${item.codAsistencia}` method="post") 
+                                    input(type="checkbox" name="cambio", checked=item.enCuenta hidden)
+                                    input(type="submit" value=item.enCuenta ? "No dictar" : "Dictar")
+    script.
+        var tableToExcel = (function() {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+            , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+            , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+            , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+        return function(table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+            window.location.href = uri + base64(format(template, ctx))
+        }
+        })()
+
+        function cambiar() {
+            
+        };

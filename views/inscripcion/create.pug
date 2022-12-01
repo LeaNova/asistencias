@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    div(class="formu")
+        form(class="border form" action="" method="post") 
+            div.titulo
+                h2 Inscribirse
+            div(class="dato width-large large")
+                label(for="materia") Nombre:
+                select(name="materia" id="materia")
+                    each mat in materias
+                        option(value=mat.codMateria)=mat.nombre
+            div(class="botonera")
+                input(type="submit" id="button" value="Inscribirse")
+                a(href="/inscripcion/alumno/list" id="button") Volver

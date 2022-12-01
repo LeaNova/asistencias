@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    if(item)
+        div(class="formu")
+            form(class="border form" action="" method="post")
+                div.titulo
+                    p="¿Seguro que quiere borrar este horario?"
+                div(class="info")
+                    p= item.Materium.nombre
+                    p= "Año de cursada: " + item.Materium.año
+                div(class="info")
+                    p= "Horario"
+                    p= item.horaInicio + " - " + item.horaFin
+                div(class="botonera")
+                    input(type="submit" id="button-delete" value="Borrar")
+                    a(href="/horario" id="button") Volver
+    else
+        div(class="sub")
+            p No se encontro horario

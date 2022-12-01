@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    each item in horarios
+        div(class="main-item bgc-2")
+            div.titulo
+                h1= "Horarios de " + item.Materium.nombre
+            div(class="grid-3")
+                each sub in item.Materium.HorarioMateria
+                    div(class="bgc-1 item centered")
+                        div(class="info-body margin-5")
+                            p= sub.Dium.dia + " de " + sub.horaInicio + " hs  a " + sub.horaFin + " hs"
+                            div(class="item-botonera button")
+                                a(href=`/horario/update/${sub.idHorario}`) Editar
+                                a(href=`/horario/delete/${sub.idHorario}`) Borrar

@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    div(class="main-item bgc-2")
+        div.titulo
+            h1 Todas las materias
+        div(class="grid-3")
+            each item in materias
+                div(class="bgc-1 centered")
+                    div(class="item")
+                        div(class="info-titulo margin-5")
+                            p= item.codMateria + " - " + item.nombre
+                        div(class="info-body")
+                            p= "Año " + item.año + " - " + item.Dictado.tipoDictado
+                        div(class="item-botonera button")
+                            a(href=`/materia/update/${item.codMateria}`) Editar
+                            a(href=`/materia/delete/${item.codMateria}`) Borrar
+                    each sub in asistencia
+                        if(item.codMateria == sub.codMateria)
+                            hr(class="dashed")
+                            div(class=`info-foot bgc-${sub.color} centered`)
+                                p= "Asistencia: " + sub.porcentaje

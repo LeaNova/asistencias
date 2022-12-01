@@ -1,0 +1,49 @@
+extends ../layout
+
+block content
+    div(class="formu")
+        form(class="border form" action="" method="post") 
+            div.titulo
+                if(item)
+                    h2 Actualizar Profesor
+                else
+                    h2 Agregar nuevo Profesor
+            div(class="dato width-large large")
+                label(for="DNI") Profesor: 
+                select(name="DNI" id="DNI")
+                    each pro in profesores
+                        if(item)
+                            if(item.DNI == pro.DNI)
+                                option(value=pro.DNI selected="true")=pro.nombre + " " + pro.apellido
+                            else
+                                option(value=pro.DNI)=pro.nombre + " " + pro.apellido
+                        else
+                            option(value=pro.DNI)=pro.nombre + " " + pro.apellido
+            div(class="dato width-large large")
+                label(for="rol") Rol: 
+                select(name="rol" id="rol")
+                    each rol in roles
+                        if(item)
+                            if(item.idRol == rol.idRol)
+                                option(value=rol.idRol selected="true")=rol.nombre
+                            else
+                                option(value=rol.idRol)=rol.nombre
+                        else
+                            option(value=rol.idRol)=rol.nombre
+            div(class="dato width-large large")
+                label(for="materia") Materia: 
+                select(name="materia" id="materia")
+                    each mat in materias
+                        if(item)
+                            if(item.codMateria == mat.codMateria)
+                                option(value=mat.codMateria selected="true")=mat.nombre
+                            else
+                                option(value=mat.codMateria)=mat.nombre
+                        else
+                            option(value=mat.codMateria)=mat.nombre
+            div(class="botonera")
+                input(type="submit", id="button", value= item ? "Actualizar" : "Agregar")
+                if(item)
+                    a(href=`/profesor/list/${item.DNI}` id="button") Volver
+                else
+                    a(href="/profesor" id="button") Volver

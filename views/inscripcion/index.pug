@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    div(class="main-item bgc-2")
+        div(class="titulo")
+            h1 Mis materias
+        div(class="grid-3")
+            each item in materias
+                div(class="bgc-1 centered")
+                    div(class="item")
+                        div(class="info-titulo margin-5")
+                            p= item.Materium.nombre
+                        div(class="info-body")
+                            p= item.Condicion.nombre

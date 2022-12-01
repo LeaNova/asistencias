@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+    if(item)
+        div(class="formu")
+            form(class="border form" action="" method="post")
+                div.titulo
+                    p="¿Seguro que quiere borrar este Profesor?"
+                div(class="info")
+                    p= item.Usuario.apellido + " " + item.Usuario.nombre
+                    p= "Como " + item.Rol.nombre + " en " + item.Materium.nombre
+                div(class="botonera")
+                    input(type="submit" id="button-delete" value="Borrar")
+                    a(href=`/profesor/list/${item.Usuario.DNI}` id="button") Volver
+    else
+        div(class="sub")
+            p No se encontro profesor

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    if(usuario)
+        div.titulo
+            h1= "Bienvenido " + usuario.nombre
+        div.sub
+            p= coso
+            if(informe && informe.length > 0)
+                p= "Se han encontrado alumnos con problemas en algunas materias"
+                p= "Ver "
+                    a(href="/informe")= "Informe ("
+                        = informe.length +")"
+    else
+        div.sub
+            p= "Inicia sesión para poder acceder al sistema de asistencia"

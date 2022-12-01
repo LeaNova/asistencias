@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+    div(class="formu")
+        form(class="border form" action="" method="post")
+            if(usuario)
+                div.titulo
+                    h2= "Cargar nuevo profesor"
+            else
+                div.titulo
+                    h2= "Registrarse"
+
+            div(class="dato width-large large")
+                label(for="DNI") DNI: 
+                input(type="text" name="DNI" placeholder="DNI")
+            div(class="dato width-large large")
+                label(for="nombre") Nombre: 
+                input(type="text" name="nombre" placeholder="Nombre")
+            div(class="dato width-large large")
+                label(for="apellido") Apellido: 
+                input(type="text" name="apellido" placeholder="Apellido")
+            div(class="dato width-large large")
+                label(for="mail") Correo: 
+                input(type="email" name="mail" placeholder="Correo")
+            div(class="dato width-large large")
+                label(for="pass") Contraseña: 
+                input(type="password" name="pass" placeholder="Contraseña")
+            div(class="botonera")
+                input(type="submit", id="button", value= usuario ? "Cargar" : "Registrarse")
+    if(usuario == null)
+        div(class="sub")
+            a(href="/usuario/login")= "Inicia sesión"

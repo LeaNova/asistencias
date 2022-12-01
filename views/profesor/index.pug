@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+    div(class="main-item bgc-2")
+        div.titulo
+            h1 Profesores
+        div(class="grid-3")
+            each item in profesores
+                div(class="bgc-1 centered")
+                    div(class="item info-titulo margin-5")
+                        p= item.nombre + ", " + item.apellido
+                        div(class="item-botonera info-body button")
+                            a(href=`/profesor/list/${item.DNI}`) Ver materias

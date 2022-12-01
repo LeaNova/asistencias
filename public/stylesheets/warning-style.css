@@ -1,0 +1,29 @@
+.aviso {
+    padding: 10px 0;
+}
+
+.alert {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.alert p {
+    width: 80%;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+}
+
+.success {
+    background-color: #ffff7d;
+    border: 2px #f9db4a solid;
+}
+
+.error {
+    background-color: #ff7673;
+    border: 2px #ff0400 solid;
+}
+
+.box {
+    border-radius: 10px;
+}

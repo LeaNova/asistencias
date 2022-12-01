@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+    div(class="main-item bgc-2")
+        div(class="titulo")
+            h1 Asistencias del dia de hoy
+        div(class="grid-1")
+            each item in asistencias
+                div(class="bgc-1 centered")
+                    div(class="item info margin-5")
+                        p= item.Materium.nombre
+                        div(class="item-botonera info-body button")
+                            a(href=`/presente/update/${item.codAsistencia}`) Marcar Asistencia

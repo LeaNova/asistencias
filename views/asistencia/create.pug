@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    div(class="formu")
+        form(class="border form" action="" method="post") 
+            div(class="titulo")
+                h2= "Asistencia " + materia.nombre
+            div(class="dato-checkbox")
+                p= "Fecha de inicio " + materia.inicio
+            div(class="dato-checkbox")
+                p= "Fecha de finalizacion " + materia.fin
+            div(class="botonera")
+                input(type="submit", id="button", value="Agregar")
+                a(href=`/materia/profesor` id="button") Volver

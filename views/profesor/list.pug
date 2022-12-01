@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    div(class="main-item bgc-2")
+        div.titulo
+            h1= "Las materias de " + item.nombre + " " + item.apellido
+        if(item)
+            div(class="grid-1")
+                if(materias != "")
+                    each item in materias
+                        div(class="bgc-1 centered")
+                            div(class="item info-titulo margin-5")
+                                p= item.Materium.nombre + ", como " + item.Rol.nombre
+                                div(class="item-botonera info-body button")
+                                    a(href=`/profesor/update/${item.DNI}/${item.codMateria}`) Editar
+                                    a(href=`/profesor/delete/${item.DNI}/${item.codMateria}`) Borrar
+                else
+                    p no tiene materias
+        else
+            p No existe profesor

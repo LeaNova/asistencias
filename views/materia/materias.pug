@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+    div(class="main-item bgc-2")
+        div.titulo
+            h1 Mis materias
+        div(class="grid-3")
+            each item in materias
+                div(class="bgc-1 centered")
+                    div(class="item info-titulo margin-5")
+                        p= item.Materium.nombre
+                        div(class="item-botonera info-body button")
+                            if(item.generado)
+                                a(href=`/asistencia/planilla/${item.codMateria}`) Ver asistencias
+                            else
+                                a(href=`/asistencia/create/${item.codMateria}`) Generar asistencia

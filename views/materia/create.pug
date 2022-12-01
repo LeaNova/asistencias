@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+    div(class="formu")
+        form(class="border form" action="" method="post") 
+            div.titulo
+                if(item)
+                    h2="Actualizar materia"
+                else
+                    h2="Agregar materia"
+            div(class="dato width-large large")
+                label(for="nombre") Nombre: 
+                input(type="text" name="nombre" id="nombre" placeholder="Nombre", value= item ? item.nombre : "")
+            div(class="dato width-small small")
+                label(for="ciclo") Ciclo: 
+                input(type="number" name="ciclo" id="ciclo", value= item ? item.ciclo : new Date().getFullYear())
+            div(class="dato width-small small")
+                label(for="anio") Año: 
+                input(type="number" name="anio" id="anio" placeholder="Año" min="1" max="5", value= item ? item.año : "")
+            div(class="dato width-large large")
+                label(for="dictado") Dictado:
+                select(name="dictado" id="dictado")
+                    each dic in dictados
+                        if(item)
+                            if(item.idDictado == dic.idDictado)
+                                option(value=dic.idDictado selected="true")=dic.tipoDictado
+                            else
+                                option(value=dic.idDictado)=dic.tipoDictado
+                        else
+                            option(value=dic.idDictado)=dic.tipoDictado
+            div(class="dato width-small small")
+                label(for="inicio") Fecha de inicio: 
+                input(type="date" name="inicio" id="inicio", value= item ? item.inicio : "")
+            div(class="dato width-small small")
+                label(for="fin") Fecha de finalización: 
+                input(type="date" name="fin" id="fin", value= item ? item.fin : "")
+            div(class="botonera")
+                input(type="submit" id="button" value= item ? "Actualizar" : "Agregar")
+                a(href="/materia" id="button") Volver

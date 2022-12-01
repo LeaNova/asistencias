@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+    div(class="formu")
+        form(class="border form" action="" method="post")
+            div.titulo
+                if(item)
+                    h2 Actualizar horario
+                else
+                    h2 Agregar horario
+            if(item)
+                div.info
+                    p= "Materia: " + item.Materium.nombre
+            else
+                div(class="dato width-large large")
+                    label(for="materia") Materia: 
+                    select(name="materia" id="materia")
+                        each mat in matProfesor
+                            option(value=mat.codMateria)=mat.Materium.nombre
+            
+            //each item in dias
+                br
+                hr
+                div(class="dato dis-flex")
+                    div(class="dato width-small small")
+                        label(for="horaInicio") Hora de inicio: 
+                        input(type="time" name="horaInicio" id="horaInicio" min="08:00" max="22:00" step="1800", value= item ? item.horaInicio : "")
+                    div(class="dato width-small small")
+                        label(for="horaFin") Hora de finalizacion: 
+                        input(type="time" name="horaFin" id="horaFin" min="08:00" max="22:00" step="1800", value= item ? item.horaFin : "")
+                div(class="dato-checkbox")
+                    input(type="checkbox" name=item.dia id=item.idDia)
+                    label(for=item.idDia)= item.dia
+            div(class="dato width-small small")
+                label(for="horaInicio") Hora de inicio: 
+                input(type="time" name="horaInicio" id="horaInicio" min="08:00" max="22:00" step="1800", value= item ? item.horaInicio : "")
+            div(class="dato width-small small")
+                label(for="horaFin") Hora de finalizacion: 
+                input(type="time" name="horaFin" id="horaFin" min="08:00" max="22:00" step="1800", value= item ? item.horaFin : "")
+            div(class="dato width-small small")
+                label(for="dia") Dia: 
+                select(name="dia" id="dia")
+                    each dia in dias
+                        if(item)
+                            if(item.idDia == dia.idDia)
+                                option(value=dia.idDia selected="true")=dia.dia
+                            else
+                                option(value=dia.idDia)=dia.dia
+                        else
+                            option(value=dia.idDia)=dia.dia
+            div(class="botonera")
+                input(type="submit", id="button", value="Agregar")
+                a(href="/horario" id="button") Volver

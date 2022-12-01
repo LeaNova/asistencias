@@ -1,0 +1,50 @@
+extends ../layout
+
+block content
+    if(item)
+        if(ok <= 30 && ok >= 0)
+            if(item.Presentes[0].presente)
+                div.sub
+                    p El usuario ya registro la asistencia
+            else 
+                div(class="formu")
+                    form(class="border form" action="" method="post") 
+                        div.titulo
+                            h2= item.Materium.nombre
+                        div(class="info")
+                            p= "Registrar presente del dia " + item.fecha.getDate() + `-${item.fecha.getMonth()+1}-` + item.fecha.getFullYear()
+                            p= "A las " + hora.getHours() + ":" + `${hora.getMinutes() < 10 ? "0" + hora.getMinutes() : hora.getMinutes()}` + "hs"
+                        div(class="botonera")
+                            input(type="submit", id="button", value="Aconfirmar")
+                            a(href='/' id="button") Volver
+        else
+            if(ok < 0)
+                div.sub
+                    p Aun falta para la asistencia
+            else
+                div.sub
+                    p Tiempo excedido para la asistencia
+    else 
+        div.sub
+            p No existe asistencia
+    //if(minutes <= 30)
+        if(item.presente)
+            div.sub
+                p El usuario ya registro la asistencia
+        else
+            div(class="formu")
+                form(class="border form" action="" method="post") 
+                    div.titulo
+                        h2= item.Materium.nombre
+                    div(class="info")
+                        p= "Presente registrado a las " + hora.getHours() + ":" + `${hora.getMinutes() < 10 ? "0" + hora.getMinutes() : hora.getMinutes()}` + "hs"
+                    div(class="botonera")
+                        input(type="submit", id="button", value="Aconfirmar")
+                        a(href='/' id="button") Volver
+    //else
+        if(item == null)
+            div.sub
+                p El usuario no esta registrado en la materia
+        else
+            div.sub
+                p Tiempo exedido para la asistencia

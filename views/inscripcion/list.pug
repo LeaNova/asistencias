@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    div(class="main-item bgc-2")
+        div.titulo
+            h1 Inscripciones pendientes
+        each mat in materias
+            div(class="grid-1")
+                div(class="bgc-1 centered")
+                    div(class="info-titulo margin-5")
+                        h2= mat.Materium.nombre
+                    each item in lista
+                        each sub in item
+                            if(sub.codMateria == mat.codMateria)
+
+                                div(class="grid-1")
+                                    form(class="form-item border-2" action=`/inscripcion/validar/${sub.Alumno.DNI}/${mat.codMateria}` method="post")
+                                        div(class="info-item")
+                                            p= sub.Alumno.Usuario.nombre + " " + sub.Alumno.Usuario.apellido
+                                        div(class="botonera-item")
+                                            input(type="submit" id="button" value="Validar")

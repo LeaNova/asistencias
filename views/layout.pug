@@ -1,0 +1,80 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/stylesheets/style.css")
+        link(rel="stylesheet", href="/stylesheets/form-style.css")
+        link(rel="stylesheet", href="/stylesheets/warning-style.css")
+        title Document
+    body
+        div.header
+            if(usuario)
+                ul.menu
+                    li 
+                        a(href="/") Home
+                    if(usuario.Access.nombre == "Coordinador")
+                        li
+                            a(href="")= "Profesores"
+                            ul
+                                li
+                                    a(href="/profesor") Índice
+                                li
+                                    a(href="/usuario/signup") Cargar nuevo
+                                li
+                                    a(href="/profesor/create") Asignar materia
+                        li
+                            a(href="")= "Materias"
+                            ul
+                                li
+                                    a(href="/materia") Índice
+                                li
+                                    a(href="/materia/create") Agregar
+                    if(usuario.Access.nombre == "Profesor")
+                        li
+                            a(href="")= "Materias"
+                            ul
+                                li
+                                    a(href=`/materia/profesor`) Mis materias
+                                li
+                                    a(href="/inscripcion/list") Ver inscripciones
+                        li
+                            a(href="")= "Horarios"
+                            ul
+                                li
+                                    a(href="/horario") Mis horarios
+                                li
+                                    a(href="/horario/create") Agregar
+                    if(usuario.Access.nombre == "Alumno")
+                        li
+                            a(href="")= "Materias"
+                            ul
+                                li
+                                    a(href="/inscripcion/alumno/list") Ver materias
+                                li
+                                    a(href="/inscripcion/create") Incribirse
+                        li
+                            a(href="")= "Asistencia"
+                            ul
+                                li
+                                    a(href="/presente/list") Ver asistencia
+                    li
+                        a(href="")= usuario.mail
+                        ul
+                            li
+                                a(href="/usuario/logout") Cerrar sesión
+            else
+                ul.menu
+                    li
+                        a(href="/usuario/login") Iniciar sesión
+        if success
+            div.aviso
+                div(class="alert success box")
+                    p= success
+        if error
+            div.aviso
+                div(class="alert error box")
+                    p= error
+        div.contenedor
+            block content
